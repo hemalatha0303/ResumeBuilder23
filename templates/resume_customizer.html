@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Customizer</title>
+    <link rel="stylesheet" href="../css/style.css"> <!-- Ensure this path is correct -->
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar"> <!-- Changed header to nav -->
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Resume</a></li>
+                <li><a href="#">Cover Letter</a></li>
+                <li><a href="#">CV</a></li>
+            </ul>
+            <div class="toggle" aria-label="Toggle dark mode">&#x1F311;</div> <!-- Added aria-label -->
+        </nav>
+        <div class="main">
+            <aside class="options">
+                <button class="option" type="button" aria-label="Change color">Color</button>
+                <button class="option" type="button" aria-label="Change font style">Font style</button>
+                <button class="option" type="button" aria-label="Change background">Background</button>
+            </aside>
+            <div class="preview">
+                <div class="resume">
+                    <div class="header">
+                        <div class="photo"></div>
+                        <h1>Your Name</h1>
+                        <p>Professional Title</p>
+                    </div>
+                    <div class="content">
+                        <section>
+                            <h2>ABOUT ME</h2>
+                            <p>Lorem ipsum dolor sit amet...</p>
+                        </section>
+                        <section>
+                            <h2>EXPERIENCE</h2>
+                            <p>Details of your work...</p>
+                        </section>
+                        <section>
+                            <h2>CONTACT</h2>
+                            <p>Email, phone...</p>
+                        </section>
+                    </div>
+                </div>
+                <div class="color-palette">
+                    <button class="color red" aria-label="Select red color"></button>
+                    <button class="color blue" aria-label="Select blue color"></button>
+                    <button class="color purple" aria-label="Select purple color"></button>
+                    <button class="color green" aria-label="Select green color"></button>
+                    <button class="color black" aria-label="Select black color"></button>
+                </div>
+                <button class="continue" type="button">Continue</button> <!-- Added type attribute -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

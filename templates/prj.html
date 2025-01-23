@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Added lang attribute -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="../css/prj.css"> <!-- Ensure this path is correct -->
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Resume</a></li>
+        <li><a href="#">Cover Letter</a></li>
+        <li><a href="#">CV</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="left-section">
+        <ul>
+          <li>User Information</li>
+          <li>Objective</li>
+          <li>Education</li>
+          <li>Internships / Projects</li>
+          <li>Experience</li>
+        </ul>
+        <button class="view-resume">View Resume</button>
+      </div>
+
+      <div class="right-section">
+        <div class="form-group">
+          <label for="projectTitle">Title of the Project/Internship:</label>
+          <input type="text" id="projectTitle" name="projectTitle">
+        </div>
+        <div class="form-group">
+          <label for="organization">Organization/Institution Name:</label>
+          <input type="text" id="organization" name="organization">
+        </div>
+        <div class="form-group">
+          <label for="duration">Duration (Start-End Date):</label>
+          <input type="text" id="duration" name="duration">
+        </div>
+        <div class="form-group">
+          <label for="keyRole">Key Role or Contribution:</label>
+          <textarea id="keyRole" name="keyRole"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="toolsUsed">Tools/Technologies Used:</label>
+          <textarea id="toolsUsed" name="toolsUsed"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="outcome">Outcome or Achievement:</label>
+          <textarea id="outcome" name="outcome"></textarea>
+        </div>
+        <button class="save" type="button" onclick="goToNextPage()">Save</button> <!-- Corrected button type -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function goToNextPage() {
+      // Redirect to the next page (e.g., "resume_objective.html")
+      window.location.href = "../pages/exp.html"; 
+    }
+  </script>
+
+</body>
+</html>

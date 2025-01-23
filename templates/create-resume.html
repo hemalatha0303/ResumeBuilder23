@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="../css/cstyle.css"> <!-- Ensure this path is correct -->
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Resume</a></li>
+        <li><a href="#">Cover Letter</a></li>
+        <li><a href="#">CV</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="left-section">
+        <ul>
+          <li>User Information</li>
+          <li>Objective</li>
+          <li>Education</li>
+          <li>Internships / Projects</li>
+          <li>Experience</li>
+        </ul>
+        <button class="view-resume">View Resume</button>
+      </div>
+
+      <div class="right-section">
+        <form onsubmit="return goToNextPage();"> <!-- Added onsubmit event -->
+          <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="linkedin">LinkedIn:</label>
+            <input type="url" id="linkedin" name="linkedin">
+          </div>
+          <div class="form-group">
+            <label for="github">GitHub:</label>
+            <input type="url" id="github" name="github">
+          </div>
+          <button class="save" type="submit">Save</button> <!-- Changed to submit -->
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function goToNextPage() {
+      // Redirect to the next page (e.g., "resume_objective.html")
+      window.location.href = "../pages/obj.html"; 
+      return false; // Prevent form submission
+    }
+  </script>
+
+</body>
+</html>

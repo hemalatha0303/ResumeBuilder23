@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Added lang attribute -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="../css/edu.css"> <!-- Ensure this path is correct -->
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Resume</a></li>
+        <li><a href="#">Cover Letter</a></li>
+        <li><a href="#">CV</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="left-section">
+        <ul>
+          <li>User Information</li>
+          <li>Objective</li>
+          <li>Education</li>
+          <li>Internships / Projects</li>
+          <li>Experience</li>
+        </ul>
+        <button class="view-resume">View Resume</button>
+      </div>
+
+      <div class="right-section">
+        <form> <!-- Added form element -->
+          <div class="form-group">
+            <label for="schooling">Schooling:</label>
+            <input type="text" id="schooling" name="schooling">
+            <label for="schoolingPercentage">Percentage:</label>
+            <input type="text" id="schoolingPercentage" name="schoolingPercentage">
+          </div>
+          <div class="form-group">
+            <label for="intermediate">Intermediate:</label>
+            <input type="text" id="intermediate" name="intermediate">
+            <label for="intermediatePercentage">Percentage:</label>
+            <input type="text" id="intermediatePercentage" name="intermediatePercentage">
+          </div>
+          <div class="form-group">
+            <label for="university">University:</label>
+            <input type="text" id="university" name="university">
+            <label for="universityPercentage">Percentage:</label>
+            <input type="text" id="universityPercentage" name="universityPercentage">
+          </div>
+          <button class="save" type="button" onclick="goToNextPage()">Save</button> <!-- Corrected button type -->
+        </form> <!-- Corrected form structure -->
+      </div> <!-- Closing div for right-section -->
+    </div>
+  </main>
+
+  <script>
+    function goToNextPage() {
+      // Redirect to the next page (e.g., "resume_objective.html")
+      window.location.href = "../pages/prj.html"; 
+    }
+  </script>
+</body>
+</html>

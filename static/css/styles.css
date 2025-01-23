@@ -1,0 +1,92 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #786979; /* Light gray background */
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #ffffff; /* White header */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 1rem;
+    position: relative; /* For positioning sub-menu */
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sub-menu {
+    display: none; /* Initially hide sub-menu */
+    position: absolute;
+    top: 100%; /* Position below the parent link */
+    left: 0;
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border: 1px solid #ccc;
+}
+
+nav li:hover .sub-menu {
+    display: block; /* Show sub-menu on hover */
+}
+
+.sub-menu li {
+    margin: 0.5rem 0;
+}
+
+.toggle {
+    /* Styling for the toggle button (if you have one) */
+}
+
+.main-container {
+    display: flex;
+}
+
+.left-section {
+    flex: 2; /* Adjust width as needed */
+}
+
+.right-section {
+    flex: 2; /* Adjust width as needed */
+    padding: 2rem;
+    background-color: #c96caa
+}
+
+.profile-details img {
+    width: 100%;
+    height: auto;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: #dfacdc; /* Button color */
+    border: none;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Optional: Hover effect */
+.btn:hover {
+    background-color: #ddd;
+}
