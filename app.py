@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
-app = Flask(__name__)
+app = Flask(__name__)  # No need to redefine it after this
 
 # Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://RBuserdetails:Root@123@localhost/resume_app'
@@ -21,9 +21,7 @@ class User(db.Model):
 # Routes
 @app.route('/')
 def index():
-    return render_template('signup.html')  # Use another template name
- # Correct the name here if needed
-
+    return render_template('signup.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
