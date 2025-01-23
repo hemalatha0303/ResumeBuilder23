@@ -21,7 +21,9 @@ class User(db.Model):
 # Routes
 @app.route('/')
 def index():
-    return render_template('index1.html')
+    return render_template('signup.html')  # Use another template name
+ # Correct the name here if needed
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

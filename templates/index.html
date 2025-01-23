@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Page</title>
-    <link rel="stylesheet" href="../css/styles.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     
 </head>
 <body>
@@ -45,9 +45,10 @@
     </header>
 
     <main class="main-container">
+        
         <section class="left-section">
             <div class="profile-details">
-                <img src="../images/background.jpg" alt="Left Side Photo">
+                <img src="{{ url_for('static', filename='images/background.jpg') }}" alt="Background">
             </div>
         </section>
 
