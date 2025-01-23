@@ -29,13 +29,18 @@ def signup():
         username = request.form['username']
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
+        
+        # Check if the email already exists
+        if User.query.filter_by(email=email).first():
+            return 'Email already exists. Please use a different email.', 400
 
         new_user = User(username=username, email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
 
-        return redirect(url_for('index'))
+        return redirect(url_for('login'))  # Redirect to login page after signup
     return render_template('signup.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -46,8 +51,10 @@ def login():
 
         if user and check_password_hash(user.password, password):
             return 'Login Successful'
-        return 'Invalid Credentials'
+        return 'Invalid email or password. Please try again.', 400
     return render_template('login.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
