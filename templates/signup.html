@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
   <header>
@@ -33,17 +33,24 @@
           <span>OR</span>
         </div>
         
-        <form method="POST">
+        <form method="POST" action="/signup">
           <input type="text" name="username" placeholder="Username" required>
           <input type="email" name="email" placeholder="Email" required>
           <input type="password" name="password" placeholder="Password" required>
-          <button type="submit" formaction="login.html">Create Account</button>
+          <button type="submit">Create Account</button>
         </form>
+        <p>Already have an account? <a href="/login">Login</a></p>
         
-        <p>Already have an account? <a href="login.html">Login</a></p>
       </div>
     </div>
   </main>
 
 </body>
+<script>
+  function validateForm() {
+      alert("Form validated!");
+      return true;
+  }
+</script>
+
 </html>

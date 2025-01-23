@@ -1,60 +1,37 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
 
-app = Flask(__name__)  # No need to redefine it after this
-
-# Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://RBuserdetails:Root@123@localhost/resume_app'
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Root@123@localhost/resume_app' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'Root@123'
 
 db = SQLAlchemy(app)
 
-# Models
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+@app.before_request
+def create_tables():
+    db.create_all()
 
-# Routes
 @app.route('/')
-def index():
+def home():
     return render_template('signup.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    from models import User  # Import inside the route to avoid circular dependency
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
-        password = generate_password_hash(request.form['password'])
-        
-        # Check if the email already exists
-        if User.query.filter_by(email=email).first():
-            return 'Email already exists. Please use a different email.', 400
+        password = request.form['password']
+
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            flash("User already exists. Please login.")
+            return redirect(url_for('signup'))
 
         new_user = User(username=username, email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
-
-        return redirect(url_for('login'))  # Redirect to login page after signup
+        flash("Account created successfully. Please log in.")
+        return redirect(url_for('login'))
     return render_template('signup.html')
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        user = User.query.filter_by(email=email).first()
-
-        if user and check_password_hash(user.password, password):
-            return 'Login Successful'
-        return 'Invalid email or password. Please try again.', 400
-    return render_template('login.html')
-
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
