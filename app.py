@@ -1,4 +1,4 @@
-from flask import Flask,  render_template 
+"""from flask import Flask,  render_template 
 from flask_mysqldb import MySQL
 import os
 print(os.path.abspath('templates'))
@@ -35,4 +35,21 @@ def index1():
 
 if __name__ == '__main__':
     init_db()  # Initialize the DB when you run the app
+    app.run(debug=True)"""
+'''from app import create_app
+from app.db import init_db
+
+app = create_app()
+with app.app_context():
+    init_db() ''' # Initialize the database tables
+
+from app import create_app
+from app.db import db
+
+app = create_app()
+
+with app.app_context():
+    db.create_all()  # Create tables for all models
+
+if __name__ == '__main__':
     app.run(debug=True)

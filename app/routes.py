@@ -18,13 +18,17 @@ def signup():
             flash("User already exists. Please login.")
             return redirect(url_for('main.signup'))
 
-        hashed_password = generate_password_hash(password, method='sha256')
+        # Hash the password
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
         new_user = User(username=username, email=email, password=hashed_password)
         db.session.add(new_user)
+
+        # Flush and commit to ensure changes are persisted
+        db.session.flush()
         db.session.commit()
 
         flash("Account created successfully!")
-        return redirect(url_for('main.login'))
+        return redirect(url_for('main.home'))
 
     return render_template('signup.html')
 
@@ -38,7 +42,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
             flash("Login successful!")
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.home'))
         else:
             flash("Invalid credentials. Please try again.")
     
@@ -47,3 +51,6 @@ def login():
 @main.route('/')
 def index():
     return render_template('index.html')
+@main.route('/home')
+def home():
+    return render_template('home.html')

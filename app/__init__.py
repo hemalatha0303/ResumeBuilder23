@@ -1,14 +1,24 @@
 from flask import Flask
-from .routes import main  # Import the blueprint
-from . import db
+from flask_sqlalchemy import SQLAlchemy
+import os
 
-def create_app():
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Root%40123@localhost/resume_app'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.secret_key = 'Root@123'
-    
-    # Register the blueprint
-    app.register_blueprint(main)
-    
-    return app
+# Initialize the Flask app
+app = Flask(__name__)
+
+# Set the secret key (for session and other functionalities)
+app.config['SECRET_KEY'] = os.urandom(24)
+
+# Configure the database URI
+# Example for SQLite (you can change this to PostgreSQL or any other DB)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://username:password@localhost/dbname?driver=ODBC+Driver+17+for+SQL+Server'
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Optional, to prevent overhead
+
+# Initialize the database
+db = SQLAlchemy(app)
+
+# Routes, models, etc., go here
+
+# Running the app
+if __name__ == "__main__":
+    app.run(debug=True)

@@ -1,4 +1,3 @@
-from app import db
+from flask_sqlalchemy import SQLAlchemy
 
-def init_db():
-    db.create_all()
+db = SQLAlchemy()  # This creates the db object, no need for init_app
