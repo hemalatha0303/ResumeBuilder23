@@ -1,12 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Root@123@localhost/resume_app' 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = 'Root@123'
-
-db = SQLAlchemy(app)
+from flask import render_template, request, redirect, url_for, flash
+from __init__ import app, db  # Import app and db from __init__.py
+from models import User  # Now you can safely import the User model
 
 @app.before_request
 def create_tables():
@@ -18,7 +12,6 @@ def home():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    from models import User  # Import inside the route to avoid circular dependency
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
@@ -35,3 +28,13 @@ def signup():
         flash("Account created successfully. Please log in.")
         return redirect(url_for('login'))
     return render_template('signup.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Handle login logic here
+        pass
+    return render_template('login.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
