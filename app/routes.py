@@ -22,7 +22,8 @@ def signup():
         new_user = User(username=username, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        flash("Account created successfully. Please log in.")
+
+        flash("Account created successfully!")
         return redirect(url_for('main.login'))
 
     return render_template('signup.html')
@@ -36,15 +37,13 @@ def login():
 
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
-            flash("Logged in successfully!")
-            return redirect(url_for('main.home'))
+            flash("Login successful!")
+            return redirect(url_for('main.index'))
         else:
             flash("Invalid credentials. Please try again.")
-            return redirect(url_for('main.login'))
-
+    
     return render_template('login.html')
 
-# Home route
 @main.route('/')
-def index1():
-    return render_template('index1.html')  # Ensure home.html exists in templates
+def index():
+    return render_template('index.html')

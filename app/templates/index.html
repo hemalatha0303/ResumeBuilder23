@@ -1,86 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Resume</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index1.css') }}">
 </head>
 <body>
+  <header>
+    <div class="logo">SR</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Resume</a>
+        <a href="#">Cover Letter</a>
+        <a href="#">CV</a>
+    </nav>
+    <div class="auth-buttons">
+        <a href="{{ url_for('main.signup') }}">Sign Up</a>
+        <a href="{{ url_for('main.login') }}">Log In</a>
+    </div>
+  </header>
 
-    <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Resume</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Create Resume</a></li>
-                        <li><a href="#">My Resumes</a></li>
-                        <li><a href="#">Find Resume Templates</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">CV</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Create CV</a></li>
-                        <li><a href="#">My CVs</a></li>
-                        <li><a href="#">Find CV Templates</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Cover Letter</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Create Cover Letter</a></li>
-                        <li><a href="#">My Cover Letters</a></li>
-                        <li><a href="#">Find Cover Letter Templates</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="toggle"></div>
-        </nav>
-    </header>
+  <main>
+    <h1>Welcome to Smart Resume</h1>
+    <p>Crafting Your Future, One Resume at a Time</p>
+  </main>
 
-    <main class="main-container">
-        
-        <section class="left-section">
-            <div class="profile-details">
-                <img src="{{ url_for('static', filename='images/background.jpg') }}" alt="Background">
-            </div>
-        </section>
-
-        
-        <section class="right-section">
-            <h2>Your Career Journey Begins Here!</h2>
-            <button class="btn" onclick="createResume()">Create Resume</button>
-
-            <h2>Your Personalized Career Hub</h2>
-            <button class="btn" onclick="viewMyResumes()">My Resumes</button>
-
-            <h2>Choose Your Perfect Resume Design</h2>
-            <button class="btn" onclick="findTemplates()">Find Resume Templates</button>
-        </section>
-    </main>
-
-    <script>
-        function createResume() {
-            // Redirect to Create Resume page
-            window.location.href = "create-resume.html"; 
-        }
-
-        function viewMyResumes() {
-            // Redirect to My Resumes page
-            window.location.href = "my-resumes.html"; 
-        }
-
-        function findTemplates() {
-            // Redirect to Find Resume Templates page
-            window.location.href = "resume-templates.html"; 
-        }
-    </script>
-
+  <footer>
+    &copy; 2024 Smart Resume. All rights reserved.
+  </footer>
 </body>
 </html>
